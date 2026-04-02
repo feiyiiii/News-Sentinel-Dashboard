@@ -177,7 +177,7 @@
       </div>
       <h1>News Sentinel</h1>
       <p class="kicker"><span class="lang lang-en">A public monitoring dashboard for major war developments, high-signal technology news, crypto snapshots, and precious metals tracking.</span><span class="lang lang-zh">一个面向公开访问的监控看板，聚焦战争动态、重要科技新闻、加密货币快照与贵金属追踪。</span></p>
-      <p><span class="lang lang-en">Last updated</span><span class="lang lang-zh">最后更新</span>: Apr 2, 2026, 12:15 PM (Asia/Shanghai)</p>
+      <p><span class="lang lang-en">Last updated</span><span class="lang lang-zh">最后更新</span>: Apr 2, 2026, 12:19 PM (Asia/Shanghai)</p>
       <span class="pill"><span class="lang lang-en">Updated every 6 hours</span><span class="lang lang-zh">每 6 小时更新</span></span>
       <span class="pill"><span class="lang lang-en">Public dashboard</span><span class="lang lang-zh">公开看板</span></span>
       <span class="pill"><span class="lang lang-en">Source-linked headlines</span><span class="lang lang-zh">附原始来源链接</span></span>
@@ -221,8 +221,8 @@
         
     <section class="card stat-card">
       <p class="eyebrow"><span class="lang lang-en">Public Visits</span><span class="lang lang-zh">公开访问量</span></p>
-      <div class="stat-value"><span class="lang lang-en">Disabled</span><span class="lang lang-zh">未启用</span></div>
-      <p class="muted"><span class="lang lang-en">Set GOATCOUNTER_ENDPOINT to enable public visit stats</span><span class="lang lang-zh">设置 GOATCOUNTER_ENDPOINT 以启用公开访问量统计</span></p>
+      <div class="stat-value"><span class="lang lang-en"><span id="live-total-visits-en">Loading...</span></span><span class="lang lang-zh"><span id="live-total-visits-zh">加载中...</span></span></div>
+      <p class="muted"><span class="lang lang-en">Near-real-time public visits via GoatCounter</span><span class="lang lang-zh">通过 GoatCounter 展示接近实时的公开访问量</span></p>
     </section>
   
       </div>
@@ -233,26 +233,26 @@
         
     <section class="card price-card down">
       <h3><span class="lang lang-en">Bitcoin</span><span class="lang lang-zh">比特币</span></h3>
-      <div class="price">$66,554.00</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.07%</strong></p>
-      <p>24h: <strong>-2.12%</strong></p>
+      <div class="price">$66,548.00</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.01%</strong></p>
+      <p>24h: <strong>-2.21%</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
     </section>
   
         
     <section class="card price-card down">
       <h3><span class="lang lang-en">Ethereum</span><span class="lang lang-zh">以太坊</span></h3>
-      <div class="price">$2,055.34</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.03%</strong></p>
-      <p>24h: <strong>-2.12%</strong></p>
+      <div class="price">$2,054.96</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.02%</strong></p>
+      <p>24h: <strong>-2.32%</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
     </section>
   
         
-    <section class="card price-card down">
+    <section class="card price-card up">
       <h3><span class="lang lang-en">Gold</span><span class="lang lang-zh">黄金</span></h3>
       <div class="price">$4,669.87</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.20%</strong></p>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>+0.00%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
@@ -260,8 +260,8 @@
         
     <section class="card price-card down">
       <h3><span class="lang lang-en">Silver</span><span class="lang lang-zh">白银</span></h3>
-      <div class="price">$71.94</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.37%</strong></p>
+      <div class="price">$71.93</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.01%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
@@ -418,5 +418,31 @@
     })();
   </script>
   
+  <script data-goatcounter="https://aimer.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var enTarget = document.getElementById('live-total-visits-en');
+      var zhTarget = document.getElementById('live-total-visits-zh');
+      var endpoint = "https://aimer.goatcounter.com/count";
+      function setText(enValue, zhValue) {
+        if (enTarget) enTarget.textContent = enValue;
+        if (zhTarget) zhTarget.textContent = zhValue;
+      }
+      try {
+        var url = new URL(endpoint);
+        fetch(url.origin + '/counter/TOTAL.json')
+          .then(function(response) { return response.json(); })
+          .then(function(data) {
+            var count = data.count || '0';
+            setText(String(count), String(count));
+          })
+          .catch(function() {
+            setText('Unavailable', '暂不可用');
+          });
+      } catch (error) {
+        setText('Unavailable', '暂不可用');
+      }
+    })();
+  </script>
 </body>
 </html>
