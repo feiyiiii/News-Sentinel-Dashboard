@@ -41,6 +41,14 @@ export const config = {
     stateFile: path.resolve(process.cwd(), process.env.STATE_FILE || './data/state.json'),
     reportFile: path.resolve(process.cwd(), process.env.REPORT_FILE || './output/latest-report.md'),
     publicDashboardFile: path.resolve(process.cwd(), './docs/index.html'),
+    publicRobotsFile: path.resolve(process.cwd(), './docs/robots.txt'),
+    publicSitemapFile: path.resolve(process.cwd(), './docs/sitemap.xml'),
+  },
+  publicSite: {
+    siteUrl: (process.env.PUBLIC_SITE_URL || 'https://feiyiiii.github.io/News-Sentinel-Dashboard/').replace(/\/?$/, '/'),
+    title: 'News Sentinel',
+    description: 'A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking.',
+    goatcounterEndpoint: process.env.GOATCOUNTER_ENDPOINT || '',
   },
   alerts: {
     btcPercent: numberFromEnv('BTC_ALERT_PERCENT', 2),

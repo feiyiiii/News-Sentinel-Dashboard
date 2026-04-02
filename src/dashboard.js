@@ -44,6 +44,21 @@ function renderSummaryCard(title, value, note) {
   `;
 }
 
+function renderLiveCounterCard(goatcounterEnabled) {
+  const value = goatcounterEnabled ? '<span id="live-total-visits">Loading...</span>' : 'Disabled';
+  const note = goatcounterEnabled
+    ? 'Near-real-time public visits via GoatCounter'
+    : 'Set GOATCOUNTER_ENDPOINT to enable public visit stats';
+
+  return `
+    <section class="card stat-card">
+      <p class="eyebrow">Public Visits</p>
+      <div class="stat-value">${value}</div>
+      <p class="muted">${escapeHtml(note)}</p>
+    </section>
+  `;
+}
+
 function renderNewsList(title, items, timezone) {
   const content = items.length === 0
     ? '<li>No items in this run.</li>'
@@ -100,21 +115,65 @@ function renderErrors(errors) {
   `;
 }
 
-export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, errors }) {
+export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, errors, publicSite }) {
   const generatedAt = formatTimestamp(runAt, timezone);
   const totalSignals = news.wars.length + news.tech.length;
   const trackedMarkets = ['BTC', 'ETH', 'GOLD', 'SILVER'].filter((key) => prices[key]).length;
+  const canonicalUrl = publicSite.siteUrl;
+  const goatcounterEnabled = Boolean(publicSite.goatcounterEndpoint);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: publicSite.title,
+    url: canonicalUrl,
+    description: publicSite.description,
+    inLanguage: 'en',
+  };
   const alertsHtml = alerts.length === 0
     ? '<li>No threshold alerts in this run.</li>'
     : alerts.map((alert) => `<li>${escapeHtml(alert)}</li>`).join('');
+
+  const analyticsScript = goatcounterEnabled ? `
+  <script data-goatcounter="${escapeHtml(publicSite.goatcounterEndpoint)}" async src="https://gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var target = document.getElementById('live-total-visits');
+      if (!target) return;
+      var endpoint = ${JSON.stringify(publicSite.goatcounterEndpoint)};
+      try {
+        var url = new URL(endpoint);
+        fetch(url.origin + '/counter/TOTAL.json')
+          .then(function(response) { return response.json(); })
+          .then(function(data) {
+            target.textContent = data.count || '0';
+          })
+          .catch(function() {
+            target.textContent = 'Unavailable';
+          });
+      } catch (error) {
+        target.textContent = 'Unavailable';
+      }
+    })();
+  </script>` : '';
 
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>News Sentinel | Public Monitoring Dashboard</title>
-  <meta name="description" content="A public dashboard tracking war developments, technology headlines, crypto, and metals snapshots." />
+  <title>${escapeHtml(publicSite.title)} | Public Monitoring Dashboard</title>
+  <meta name="description" content="${escapeHtml(publicSite.description)}" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="${escapeHtml(publicSite.title)} | Public Monitoring Dashboard" />
+  <meta property="og:description" content="${escapeHtml(publicSite.description)}" />
+  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
+  <meta property="og:site_name" content="${escapeHtml(publicSite.title)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(publicSite.title)} | Public Monitoring Dashboard" />
+  <meta name="twitter:description" content="${escapeHtml(publicSite.description)}" />
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   <style>
     :root {
       --bg: #f6efe5;
@@ -271,6 +330,7 @@ export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, e
         ${renderSummaryCard('News Signals', totalSignals, 'Combined war and technology headlines in this update')}
         ${renderSummaryCard('War Headlines', news.wars.length, 'Highest-priority conflict-related stories')}
         ${renderSummaryCard('Tech Headlines', news.tech.length, 'Highest-priority technology stories')}
+        ${renderLiveCounterCard(goatcounterEnabled)}
       </div>
     </section>
 
@@ -307,6 +367,7 @@ export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, e
       Designed for lightweight public monitoring, with emphasis on readable summaries and source visibility.
     </div>
   </main>
+  ${analyticsScript}
 </body>
 </html>`;
 }

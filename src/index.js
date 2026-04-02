@@ -5,6 +5,7 @@ import { fetchNews } from './providers/news.js';
 import { fetchXSignals } from './providers/x.js';
 import { buildMarkdownReport } from './report.js';
 import { buildDashboardHtml } from './dashboard.js';
+import { buildRobotsTxt, buildSitemapXml } from './seo.js';
 import { sendWebhook } from './notify.js';
 
 function buildAlerts(prices, thresholds) {
@@ -76,11 +77,16 @@ async function main() {
     news,
     x,
     errors: allErrors,
+    publicSite: config.publicSite,
   });
+  const robotsTxt = buildRobotsTxt(config.publicSite.siteUrl);
+  const sitemapXml = buildSitemapXml(config.publicSite.siteUrl, runAt);
 
   writeText(config.paths.reportFile, report);
   writeText(config.paths.reportFile.replace(/latest-report\.md$/, 'dashboard.html'), dashboardHtml);
   writeText(config.paths.publicDashboardFile, dashboardHtml);
+  writeText(config.paths.publicRobotsFile, robotsTxt);
+  writeText(config.paths.publicSitemapFile, sitemapXml);
   writeJson(config.paths.stateFile, {
     lastRunAt: runAt.toISOString(),
     prices,

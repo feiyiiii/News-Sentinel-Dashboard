@@ -55,6 +55,7 @@ Important:
 - Do not commit `.env`
 - Keep API keys in GitHub repository secrets, not in the repo
 - `docs/index.html` is safe to publish because it only contains fetched results, not your keys
+- `docs/robots.txt` and `docs/sitemap.xml` are generated for SEO
 
 Current public URL:
 
@@ -68,6 +69,8 @@ Current public URL:
 - `WEBHOOK_FORMAT`: `generic-json`, `slack`, or `discord`.
 - `WECHAT_WORK_WEBHOOK_URL`: optional. If set, it takes priority and sends the report to a WeCom group robot.
 - `ALPHA_VANTAGE_API_KEY`: optional. Defaults to `demo` for gold/silver spot requests.
+- `PUBLIC_SITE_URL`: public canonical URL for the live site.
+- `GOATCOUNTER_ENDPOINT`: optional. Add a GoatCounter endpoint such as `https://YOURCODE.goatcounter.com/count` to enable public visit tracking.
 - `BTC_ALERT_PERCENT`, `ETH_ALERT_PERCENT`, `GOLD_ALERT_PERCENT`, `SILVER_ALERT_PERCENT`: per-run alert thresholds.
 - `STATE_FILE`: path to local state JSON.
 - `REPORT_FILE`: path to the generated Markdown report.
@@ -116,11 +119,22 @@ RSS feeds can occasionally change or rate-limit. The bot keeps going even if som
 
 The public page is an automated monitoring surface. It is designed for quick situational awareness, not as financial advice, not as battlefield verification, and not as a substitute for reading the original linked reporting.
 
+### Analytics / visit tracking
+
+This project supports GoatCounter for privacy-friendly visit analytics. GoatCounter's hosted service documents a lightweight script embed and a visitor counter, including a JavaScript snippet and `TOTAL` counter endpoint.
+
+Sources:
+
+- [GoatCounter homepage](https://www.goatcounter.com/)
+- [GoatCounter getting started](https://www.goatcounter.com/help/start)
+- [GoatCounter visitor counter](https://www.goatcounter.com/help/visitor-counter)
+
 ## Output
 
 - Markdown report: `output/latest-report.md`
 - Local dashboard: `output/dashboard.html`
 - Public dashboard for GitHub Pages: `docs/index.html`
+- SEO files: `docs/robots.txt`, `docs/sitemap.xml`
 - State snapshot: `data/state.json`
 
 ## Next upgrades I recommend

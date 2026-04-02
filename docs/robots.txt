@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://feiyiiii.github.io/News-Sentinel-Dashboard/sitemap.xml
