@@ -28,6 +28,23 @@ function buildAlerts(prices, thresholds) {
   return alerts;
 }
 
+function mergePricesWithFallback(previousPrices, freshPrices) {
+  const merged = { ...freshPrices };
+  const keys = ['BTC', 'ETH', 'GOLD', 'SILVER'];
+
+  for (const key of keys) {
+    if (merged[key]) continue;
+    if (!previousPrices[key]) continue;
+
+    merged[key] = {
+      ...previousPrices[key],
+      stale: true,
+    };
+  }
+
+  return merged;
+}
+
 async function main() {
   const runAt = new Date();
   const previousState = readJson(config.paths.stateFile, {
@@ -56,7 +73,7 @@ async function main() {
   const x = xResult.status === 'fulfilled' ? xResult.value : { enabled: false, items: [], errors: [] };
   if (xResult.status === 'rejected') errors.push(`X: ${xResult.reason.message}`);
 
-  const prices = { ...crypto, ...metals };
+  const prices = mergePricesWithFallback(previousState.prices || {}, { ...crypto, ...metals });
   const alerts = buildAlerts(prices, config.alerts);
   const allErrors = [...errors, ...(news.errors || []), ...(x.errors || [])];
 

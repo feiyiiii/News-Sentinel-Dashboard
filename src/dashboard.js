@@ -30,6 +30,9 @@ function renderPriceCard(item, englishLabel, chineseLabel) {
   const runChange = item.runChange == null ? 'n/a' : formatPercent(item.runChange);
   const dayChange = item.change24h == null ? 'n/a' : formatPercent(item.change24h);
   const tone = item.runChange > 0 ? 'up' : item.runChange < 0 ? 'down' : 'flat';
+  const freshnessNote = item.stale
+    ? renderLang('Cached value', '缓存值')
+    : renderLang('Live snapshot', '实时快照');
 
   return `
     <section class="card price-card ${tone}">
@@ -37,7 +40,7 @@ function renderPriceCard(item, englishLabel, chineseLabel) {
       <div class="price">$${formatNumber(item.price)}</div>
       <p>${renderLang('Since last run', '较上次运行')}: <strong>${escapeHtml(runChange)}</strong></p>
       <p>24h: <strong>${escapeHtml(dayChange)}</strong></p>
-      <p class="muted">${renderLang('Source', '来源')}: ${escapeHtml(item.source)}</p>
+      <p class="muted">${renderLang('Source', '来源')}: ${escapeHtml(item.source)} · ${freshnessNote}</p>
     </section>
   `;
 }
