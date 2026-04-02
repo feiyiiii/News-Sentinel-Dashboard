@@ -56,6 +56,10 @@ Important:
 - Keep API keys in GitHub repository secrets, not in the repo
 - `docs/index.html` is safe to publish because it only contains fetched results, not your keys
 
+Current public URL:
+
+- `https://feiyiiii.github.io/News-Sentinel-Dashboard/`
+
 ## Environment variables
 
 - `X_BEARER_TOKEN`: optional. Required if you want official X scanning.
@@ -107,6 +111,10 @@ The implementation uses Alpha Vantage's official gold/silver spot endpoint. The 
 ### News source stability
 
 RSS feeds can occasionally change or rate-limit. The bot keeps going even if some feeds fail and records those failures in the report.
+
+### Public dashboard disclaimer
+
+The public page is an automated monitoring surface. It is designed for quick situational awareness, not as financial advice, not as battlefield verification, and not as a substitute for reading the original linked reporting.
 
 ## Output
 

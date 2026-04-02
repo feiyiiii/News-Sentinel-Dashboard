@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>News Sentinel Dashboard</title>
+  <title>News Sentinel | Public Monitoring Dashboard</title>
+  <meta name="description" content="A public dashboard tracking war developments, technology headlines, crypto, and metals snapshots." />
   <style>
     :root {
       --bg: #f6efe5;
@@ -68,6 +69,19 @@
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 14px;
     }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 36px;
+      font-weight: 750;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
     .price-card .price {
       font-size: 28px;
       font-weight: 700;
@@ -100,10 +114,19 @@
       text-decoration: none;
     }
     a:hover { text-decoration: underline; }
+    .kicker {
+      max-width: 760px;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .disclaimer {
+      border-left: 6px solid #d9a441;
+    }
     .footer {
       margin-top: 18px;
       color: var(--muted);
       font-size: 14px;
+      line-height: 1.7;
     }
     .pill {
       display: inline-block;
@@ -119,12 +142,12 @@
 <body>
   <main class="wrap">
     <section class="hero">
-      <h1>News Sentinel Dashboard</h1>
-      <p>A local dashboard for war updates, tech news, crypto, and metals monitoring.</p>
-      <p>Generated at Apr 2, 2026, 2:50 AM</p>
-      <span class="pill">6-hour monitoring bot</span>
-      <span class="pill">Local dashboard</span>
-      <span class="pill">Click links to open sources</span>
+      <h1>News Sentinel</h1>
+      <p class="kicker">A public monitoring dashboard for major war developments, high-signal technology news, crypto snapshots, and precious metals tracking.</p>
+      <p>Last updated: Apr 2, 2026, 10:53 AM (Asia/Shanghai)</p>
+      <span class="pill">Updated every 6 hours</span>
+      <span class="pill">Public dashboard</span>
+      <span class="pill">Source-linked headlines</span>
     </section>
 
     <section class="card summary">
@@ -132,40 +155,73 @@
       <ul><li>No threshold alerts in this run.</li></ul>
     </section>
 
+    <section class="summary">
+      <div class="summary-grid">
+        
+    <section class="card stat-card">
+      <p class="eyebrow">Tracked Markets</p>
+      <div class="stat-value">4</div>
+      <p class="muted">BTC, ETH, Gold, and Silver snapshots</p>
+    </section>
+  
+        
+    <section class="card stat-card">
+      <p class="eyebrow">News Signals</p>
+      <div class="stat-value">16</div>
+      <p class="muted">Combined war and technology headlines in this update</p>
+    </section>
+  
+        
+    <section class="card stat-card">
+      <p class="eyebrow">War Headlines</p>
+      <div class="stat-value">8</div>
+      <p class="muted">Highest-priority conflict-related stories</p>
+    </section>
+  
+        
+    <section class="card stat-card">
+      <p class="eyebrow">Tech Headlines</p>
+      <div class="stat-value">8</div>
+      <p class="muted">Highest-priority technology stories</p>
+    </section>
+  
+      </div>
+    </section>
+
     <section class="prices">
       <div class="price-grid">
         
-    <section class="card price-card flat">
+    <section class="card price-card down">
       <h3>Bitcoin</h3>
-      <div class="price">$66,814.00</div>
-      <p>Since last run: <strong>n/a</strong></p>
-      <p>24h: <strong>-1.22%</strong></p>
+      <div class="price">$66,816.00</div>
+      <p>Since last run: <strong>-0.25%</strong></p>
+      <p>24h: <strong>-1.13%</strong></p>
       <p class="muted">Source: CoinGecko</p>
     </section>
   
         
-    <section class="card price-card flat">
+    <section class="card price-card down">
       <h3>Ethereum</h3>
-      <div class="price">$2,070.82</div>
-      <p>Since last run: <strong>n/a</strong></p>
-      <p>24h: <strong>-0.78%</strong></p>
+      <div class="price">$2,071.71</div>
+      <p>Since last run: <strong>-0.72%</strong></p>
+      <p>24h: <strong>-0.76%</strong></p>
       <p class="muted">Source: CoinGecko</p>
     </section>
   
         
-    <section class="card price-card flat">
+    <section class="card price-card up">
       <h3>Gold</h3>
-      <div class="price">$4,677.88</div>
-      <p>Since last run: <strong>n/a</strong></p>
+      <div class="price">$4,677.02</div>
+      <p>Since last run: <strong>+0.16%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted">Source: Alpha Vantage</p>
     </section>
   
         
-    <section class="card price-card flat">
+    <section class="card price-card up">
       <h3>Silver</h3>
-      <div class="price">$0.00</div>
-      <p>Since last run: <strong>n/a</strong></p>
+      <div class="price">$72.17</div>
+      <p>Since last run: <strong>+0.26%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted">Source: Alpha Vantage</p>
     </section>
@@ -181,42 +237,42 @@
       <ul class="news-list">
           <li>
             <a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOUzNDNUxwT3Z4Q1dwc0NSdmFzVnU4djdDTGpSWnFFWlFQZWdzMV9rYjY1RzlIQmpGSkVnTllodGkzM2h0RzNXcVNRUTMzLXJqeUoyOFpBN1RDZ0xWQzNmTVk1dkRjdlZrYUNJaTVvTHMwcnNJcjVjYlJBWmdsRzFaZi1aa3RhNFpHVmNpRFBteUF1bXM2OFRybDJYdmNsVVdEcEF2dFlRMWFGU25kYy1PN2JLTTRNZmFsVHZsY19pX1RHMkVaNHRGRGtEdTR2MC15N1FfbDVR?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Zelensky proposes energy ceasefire with Moscow as Iran conflict sends oil prices soaring - The Independent</a>
-            <div class="meta">Google News Ukraine | Mar 31, 2026, 3:31 AM</div>
+            <div class="meta">Google News Ukraine | Mar 31, 2026, 11:31 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNeGRDSHRxZXdZaWphSlpneWJaZjA0bEV6d0ZERGtVRjhudXlRQ05BUzI3UWh0WXBYTDdmcTVIY0hBWWxyMHg2WlJJT2ZWLVNQSjBQanFFWmwzTEJQMHpwRGNnRFJMdmRJdThsRXlpdGtVckRjeVBCWTJfTkxyS0JYTk40bW8tVlJrQ2c5OExQdm1tZ0dsNExMcXpoOFc2d0J2N2xZWldGaERLckJvMEhmZHNvaVJtQkRn?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Kyiv strikes chemical plant deep behind enemy lines with drones, report claims - The Independent</a>
-            <div class="meta">Google News Ukraine | Mar 30, 2026, 2:05 PM</div>
+            <div class="meta">Google News Ukraine | Mar 30, 2026, 10:05 PM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVUlNY3ZWWlNKUTZyOUtsbGRrRm11bktPWk41WnJsU1hkbE1vWkxuLXhTMk12dmxtbkJnZzBQV2QwcF9uMktoaFZPTHJqN0FfaFBpci0xQjVib1RDQlJZN0xnQU0xWUktaTFBR2ZkZnFzVDNDYmFCa2swanRka0U4MnB0cFlKMy1PcVB6UnN1UlJEakhSWmxsTmJEQTlFUjVCbEE5NmtaU09uRFcycHpWTU1KVWlpZFZLWnpZN1FqNEbSAcYBQVVfeXFMTnhCY3JicUF6ZUNuU04yekhDMXlWdjdfQTZiTHY0RVFLcXJUVlZyWFFoempKUzV6SXFfeDJrUExnSUZpcnU0bHZkYU8wOTdNYWxYR0ZXaGdsNU9KTG9zRXNOMkY5dFM3VmRMWDJ6NzliVFBhMklSWk1TNTM1N0N4ekQxOXM1X09iYnJsNmZvTlBHRGhUdUREd185ZTV6THZfb1dtbkxRdlBMaTBuaV9HSFlpUHZpeXFFYTI4aDdERUI5M1Z3d2Zn?oc=5" target="_blank" rel="noreferrer">Iran war deflects attention from Ukraine as an emboldened Russia starts spring offensive - PBS</a>
-            <div class="meta">Google News Ukraine | Mar 26, 2026, 8:38 PM</div>
+            <div class="meta">Google News Ukraine | Mar 27, 2026, 4:38 AM</div>
           </li>
         
           <li>
             <a href="https://www.bbc.com/news/articles/c0kr8lrpekmo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Asia&#39;s migrant workers debate if Gulf jobs are worth deadly risk of Iran war</a>
-            <div class="meta">BBC World | Mar 31, 2026, 10:48 PM</div>
+            <div class="meta">BBC World | Apr 1, 2026, 6:48 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPVzkwYzRiMUVRak1FR2V2VW9BZjZsMldKNnZkYmJIaWk5YVhlSTN0bFM2RWxlM1NCZG83VmJMcHdOR29OQlBfYWpPcDRodDVnMXR2SWs3MHBuTW5YTm5TNW14WG9iQ3FLcF9GWkszbWpfcjNUOW9rYU52NnJJa2JObUg2dWltYjhtZTllUTRWZjFNLXBOam9Ea1ZKTU5qd2VOWlRzOE9KY081S1RvejBCZ0JZN1piQVZxUXc?oc=5" target="_blank" rel="noreferrer">Ukraine war briefing: Russia responds to Zelenskyy’s Easter truce offer with drone attack - The Guardian</a>
-            <div class="meta">Google News Ukraine | Apr 2, 2026, 2:07 AM</div>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 10:07 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOSF84dnRUNkpIVjVwcXB1bzZuXzZSSG82MnBSRWc2ZWVDeGUwQTh0N3k4NkNZdllHZUNyTlNuUzJ5TUFwdVZRazdZRllUYkd1N1VvLXJNZmdWU1B6UmJkQ3lnQk5xQnZ2d040TnBsdngzLXdwOUFtaDFGSzRabnhNUmp3dU5wZXY0SVdQSVQ3RWdBa05GZHNETk83bzZyWTg0d19ibHlLUnRwclVxVTBody1WbVVqcGM?oc=5" target="_blank" rel="noreferrer">Ukraine war latest: Russia launches mass daytime drone attack on western, central Ukraine - The Kyiv Independent</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 6:26 PM</div>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 2:26 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPbl8tck1nbEo0Qlg4c2ppV2VvV0FPUGJaLVVVUHZXRFY1Q2JBWlI0ZjFnQmpCZGlpTm8xNzA0ZjY0Nm1pWUNic3NveUNTcExtTkxyQ0Fod0U3ZE83a1FXal91VHMxbVRQMThuMWxSdkoycFdsa3JOcm5zVlpSM1ZpOFRya2dZN2pja01la2g3VjJmNHZ3T3JzNjM4cVVHZWpubnBoOEJHOEtRNzdyaHliODRYd3BiQQ?oc=5" target="_blank" rel="noreferrer">Russia and Ukraine Set to Intensify War as World Focuses on Iran - Bloomberg.com</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 12:27 PM</div>
+            <div class="meta">Google News Ukraine | Apr 1, 2026, 8:27 PM</div>
           </li>
         
           <li>
             <a href="https://www.npr.org/2026/04/01/nx-s1-5769805/iran-war-trump" target="_blank" rel="noreferrer">Israel strikes Lebanon as Trump is set to deliver a speech on the Iran war</a>
-            <div class="meta">NPR World | Apr 1, 2026, 10:02 AM</div>
+            <div class="meta">NPR World | Apr 1, 2026, 6:02 PM</div>
           </li>
         </ul>
     </section>
@@ -227,42 +283,42 @@
       <ul class="news-list">
           <li>
             <a href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noreferrer">Nvidia rolls out its fix for PC gaming&#39;s &quot;compiling shaders&quot; wait times</a>
-            <div class="meta">Ars Technica | Apr 1, 2026, 8:46 PM</div>
+            <div class="meta">Ars Technica | Apr 2, 2026, 4:46 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noreferrer">Startup funding shatters all records in Q1</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 8:25 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 4:25 AM</div>
           </li>
         
           <li>
             <a href="https://www.theverge.com/transportation/905363/kia-ev3-north-america-launch" target="_blank" rel="noreferrer">Kia&amp;#8217;s compact EV3 is coming to the US this year, with 320 miles of range</a>
-            <div class="meta">The Verge | Apr 1, 2026, 5:50 PM</div>
+            <div class="meta">The Verge | Apr 2, 2026, 1:50 AM</div>
           </li>
         
           <li>
             <a href="https://www.wired.com/story/iran-threatens-to-start-attacking-major-us-tech-firms-on-april-1/" target="_blank" rel="noreferrer">Iran Threatens to Start Attacking Major US Tech Firms on April 1</a>
-            <div class="meta">Wired | Mar 31, 2026, 9:25 PM</div>
+            <div class="meta">Wired | Apr 1, 2026, 5:25 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noreferrer">&amp;#8216;System failure&amp;#8217; paralyzes Baidu robotaxis in China</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 9:12 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 5:12 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noreferrer">Apple releases security fix for older iPhones and iPads to protect against DarkSword attacks</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 7:02 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 3:02 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/" target="_blank" rel="noreferrer">Meta’s natural gas binge could power South Dakota</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 6:35 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 2:35 AM</div>
           </li>
         
           <li>
             <a href="https://www.wired.com/story/ai-models-lie-cheat-steal-protect-other-models-research/" target="_blank" rel="noreferrer">AI Models Lie, Cheat, and Steal to Protect Other Models From Being Deleted</a>
-            <div class="meta">Wired | Apr 1, 2026, 6:30 PM</div>
+            <div class="meta">Wired | Apr 2, 2026, 2:30 AM</div>
           </li>
         </ul>
     </section>
@@ -282,8 +338,19 @@
       </div>
     </section>
 
+    <section class="card disclaimer">
+      <h2>Public Notes</h2>
+      <ul>
+        <li>This page is an automated public snapshot, not investment advice or war-zone verification.</li>
+        <li>Each headline links to its original source for direct reading and independent judgment.</li>
+        <li>X monitoring is currently disabled in the public version to avoid unstable API credit usage.</li>
+      </ul>
+    </section>
+
     <div class="footer">
-      File generated locally by News Sentinel Bot.
+      Public page generated by News Sentinel Bot.
+      <br />
+      Designed for lightweight public monitoring, with emphasis on readable summaries and source visibility.
     </div>
   </main>
 </body>
