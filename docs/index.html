@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN" data-lang="zh">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>News Sentinel | Public Monitoring Dashboard</title>
-  <meta name="description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking." />
+  <title>News Sentinel | Public Monitoring Dashboard | 公开监控看板</title>
+  <meta name="description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking. 面向公开访问的战争、科技、加密货币与贵金属监控看板。" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://feiyiiii.github.io/News-Sentinel-Dashboard/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="News Sentinel | Public Monitoring Dashboard" />
-  <meta property="og:description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking." />
+  <meta property="og:title" content="News Sentinel | Public Monitoring Dashboard | 公开监控看板" />
+  <meta property="og:description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking. 面向公开访问的战争、科技、加密货币与贵金属监控看板。" />
   <meta property="og:url" content="https://feiyiiii.github.io/News-Sentinel-Dashboard/" />
   <meta property="og:site_name" content="News Sentinel" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="News Sentinel | Public Monitoring Dashboard" />
-  <meta name="twitter:description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking." />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"News Sentinel","url":"https://feiyiiii.github.io/News-Sentinel-Dashboard/","description":"A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking.","inLanguage":"en"}</script>
+  <meta name="twitter:title" content="News Sentinel | Public Monitoring Dashboard | 公开监控看板" />
+  <meta name="twitter:description" content="A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking. 面向公开访问的战争、科技、加密货币与贵金属监控看板。" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"News Sentinel","url":"https://feiyiiii.github.io/News-Sentinel-Dashboard/","description":"A public monitoring dashboard for war developments, technology headlines, crypto snapshots, and precious metals tracking.","inLanguage":["en","zh-CN"]}</script>
   <style>
     :root {
       --bg: #f6efe5;
@@ -38,6 +38,10 @@
         linear-gradient(135deg, #f3eadf 0%, #efe1cf 50%, #ead8c0 100%);
       min-height: 100vh;
     }
+    html[data-lang="zh"] .lang-en,
+    html[data-lang="en"] .lang-zh {
+      display: none;
+    }
     .wrap {
       max-width: 1180px;
       margin: 0 auto;
@@ -50,20 +54,37 @@
       border-radius: 24px;
       box-shadow: var(--shadow);
       margin-bottom: 20px;
+      position: relative;
+    }
+    .language-toggle {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      display: flex;
+      gap: 8px;
+    }
+    .lang-button {
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .lang-button.is-active {
+      background: rgba(255,255,255,0.24);
+      border-color: rgba(255,255,255,0.55);
     }
     .hero h1 {
       margin: 0 0 8px;
       font-size: clamp(28px, 4vw, 44px);
       line-height: 1.05;
+      padding-right: 140px;
     }
     .hero p {
       margin: 6px 0;
       color: rgba(255,255,255,0.86);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
     }
     .card {
       background: var(--panel);
@@ -110,29 +131,17 @@
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 16px;
     }
-    h2, h3 {
-      margin-top: 0;
-    }
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    a {
-      color: #0f4f87;
-      text-decoration: none;
-    }
+    h2, h3 { margin-top: 0; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin-bottom: 10px; }
+    a { color: #0f4f87; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .kicker {
       max-width: 760px;
       font-size: 17px;
       line-height: 1.6;
     }
-    .disclaimer {
-      border-left: 6px solid #d9a441;
-    }
+    .disclaimer { border-left: 6px solid #d9a441; }
     .footer {
       margin-top: 18px;
       color: var(--muted);
@@ -148,59 +157,72 @@
       margin-right: 8px;
       margin-top: 8px;
     }
+    @media (max-width: 720px) {
+      .language-toggle {
+        position: static;
+        margin-bottom: 16px;
+      }
+      .hero h1 {
+        padding-right: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
+      <div class="language-toggle" aria-label="Language switcher">
+        <button class="lang-button" data-set-lang="zh">中文</button>
+        <button class="lang-button" data-set-lang="en">EN</button>
+      </div>
       <h1>News Sentinel</h1>
-      <p class="kicker">A public monitoring dashboard for major war developments, high-signal technology news, crypto snapshots, and precious metals tracking.</p>
-      <p>Last updated: Apr 2, 2026, 3:13 AM (UTC)</p>
-      <span class="pill">Updated every 6 hours</span>
-      <span class="pill">Public dashboard</span>
-      <span class="pill">Source-linked headlines</span>
+      <p class="kicker"><span class="lang lang-en">A public monitoring dashboard for major war developments, high-signal technology news, crypto snapshots, and precious metals tracking.</span><span class="lang lang-zh">一个面向公开访问的监控看板，聚焦战争动态、重要科技新闻、加密货币快照与贵金属追踪。</span></p>
+      <p><span class="lang lang-en">Last updated</span><span class="lang lang-zh">最后更新</span>: Apr 2, 2026, 12:15 PM (Asia/Shanghai)</p>
+      <span class="pill"><span class="lang lang-en">Updated every 6 hours</span><span class="lang lang-zh">每 6 小时更新</span></span>
+      <span class="pill"><span class="lang lang-en">Public dashboard</span><span class="lang lang-zh">公开看板</span></span>
+      <span class="pill"><span class="lang lang-en">Source-linked headlines</span><span class="lang lang-zh">附原始来源链接</span></span>
     </section>
 
     <section class="card summary">
-      <h2>Alerts</h2>
-      <ul><li>No threshold alerts in this run.</li></ul>
+      <h2><span class="lang lang-en">Alerts</span><span class="lang lang-zh">告警</span></h2>
+      <ul><li><span class="lang lang-en">No threshold alerts in this run.</span><span class="lang lang-zh">本轮未触发阈值告警。</span></li></ul>
     </section>
 
     <section class="summary">
       <div class="summary-grid">
         
     <section class="card stat-card">
-      <p class="eyebrow">Tracked Markets</p>
+      <p class="eyebrow"><span class="lang lang-en">Tracked Markets</span><span class="lang lang-zh">监控市场</span></p>
       <div class="stat-value">4</div>
-      <p class="muted">BTC, ETH, Gold, and Silver snapshots</p>
+      <p class="muted"><span class="lang lang-en">BTC, ETH, Gold, and Silver snapshots</span><span class="lang lang-zh">BTC、ETH、黄金与白银快照</span></p>
     </section>
   
         
     <section class="card stat-card">
-      <p class="eyebrow">News Signals</p>
+      <p class="eyebrow"><span class="lang lang-en">News Signals</span><span class="lang lang-zh">新闻信号</span></p>
       <div class="stat-value">16</div>
-      <p class="muted">Combined war and technology headlines in this update</p>
+      <p class="muted"><span class="lang lang-en">Combined war and technology headlines in this update</span><span class="lang lang-zh">本轮战争与科技头条合计</span></p>
     </section>
   
         
     <section class="card stat-card">
-      <p class="eyebrow">War Headlines</p>
+      <p class="eyebrow"><span class="lang lang-en">War Headlines</span><span class="lang lang-zh">战争头条</span></p>
       <div class="stat-value">8</div>
-      <p class="muted">Highest-priority conflict-related stories</p>
+      <p class="muted"><span class="lang lang-en">Highest-priority conflict-related stories</span><span class="lang lang-zh">优先级最高的冲突相关动态</span></p>
     </section>
   
         
     <section class="card stat-card">
-      <p class="eyebrow">Tech Headlines</p>
+      <p class="eyebrow"><span class="lang lang-en">Tech Headlines</span><span class="lang lang-zh">科技头条</span></p>
       <div class="stat-value">8</div>
-      <p class="muted">Highest-priority technology stories</p>
+      <p class="muted"><span class="lang lang-en">Highest-priority technology stories</span><span class="lang lang-zh">优先级最高的科技动态</span></p>
     </section>
   
         
     <section class="card stat-card">
-      <p class="eyebrow">Public Visits</p>
-      <div class="stat-value"><span id="live-total-visits">Loading...</span></div>
-      <p class="muted">Near-real-time public visits via GoatCounter</p>
+      <p class="eyebrow"><span class="lang lang-en">Public Visits</span><span class="lang lang-zh">公开访问量</span></p>
+      <div class="stat-value"><span class="lang lang-en">Disabled</span><span class="lang lang-zh">未启用</span></div>
+      <p class="muted"><span class="lang lang-en">Set GOATCOUNTER_ENDPOINT to enable public visit stats</span><span class="lang lang-zh">设置 GOATCOUNTER_ENDPOINT 以启用公开访问量统计</span></p>
     </section>
   
       </div>
@@ -209,39 +231,39 @@
     <section class="prices">
       <div class="price-grid">
         
-    <section class="card price-card flat">
-      <h3>Bitcoin</h3>
-      <div class="price">$66,813.00</div>
-      <p>Since last run: <strong>n/a</strong></p>
-      <p>24h: <strong>-1.68%</strong></p>
-      <p class="muted">Source: CoinGecko</p>
+    <section class="card price-card down">
+      <h3><span class="lang lang-en">Bitcoin</span><span class="lang lang-zh">比特币</span></h3>
+      <div class="price">$66,554.00</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.07%</strong></p>
+      <p>24h: <strong>-2.12%</strong></p>
+      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
     </section>
   
         
-    <section class="card price-card flat">
-      <h3>Ethereum</h3>
-      <div class="price">$2,070.67</div>
-      <p>Since last run: <strong>n/a</strong></p>
-      <p>24h: <strong>-1.43%</strong></p>
-      <p class="muted">Source: CoinGecko</p>
+    <section class="card price-card down">
+      <h3><span class="lang lang-en">Ethereum</span><span class="lang lang-zh">以太坊</span></h3>
+      <div class="price">$2,055.34</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.03%</strong></p>
+      <p>24h: <strong>-2.12%</strong></p>
+      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
     </section>
   
         
-    <section class="card price-card flat">
-      <h3>Gold</h3>
-      <div class="price">$4,687.07</div>
-      <p>Since last run: <strong>n/a</strong></p>
+    <section class="card price-card down">
+      <h3><span class="lang lang-en">Gold</span><span class="lang lang-zh">黄金</span></h3>
+      <div class="price">$4,669.87</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.20%</strong></p>
       <p>24h: <strong>n/a</strong></p>
-      <p class="muted">Source: Alpha Vantage</p>
+      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
   
         
-    <section class="card price-card flat">
-      <h3>Silver</h3>
-      <div class="price">$72.21</div>
-      <p>Since last run: <strong>n/a</strong></p>
+    <section class="card price-card down">
+      <h3><span class="lang lang-en">Silver</span><span class="lang lang-zh">白银</span></h3>
+      <div class="price">$71.94</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.37%</strong></p>
       <p>24h: <strong>n/a</strong></p>
-      <p class="muted">Source: Alpha Vantage</p>
+      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
   
       </div>
@@ -251,147 +273,150 @@
       <div class="lists-grid">
         
     <section class="card">
-      <h2>War Developments</h2>
+      <h2><span class="lang lang-en">War Developments</span><span class="lang lang-zh">战争动态</span></h2>
       <ul class="news-list">
           <li>
+            <a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOUzNDNUxwT3Z4Q1dwc0NSdmFzVnU4djdDTGpSWnFFWlFQZWdzMV9rYjY1RzlIQmpGSkVnTllodGkzM2h0RzNXcVNRUTMzLXJqeUoyOFpBN1RDZ0xWQzNmTVk1dkRjdlZrYUNJaTVvTHMwcnNJcjVjYlJBWmdsRzFaZi1aa3RhNFpHVmNpRFBteUF1bXM2OFRybDJYdmNsVVdEcEF2dFlRMWFGU25kYy1PN2JLTTRNZmFsVHZsY19pX1RHMkVaNHRGRGtEdTR2MC15N1FfbDVR?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Zelensky proposes energy ceasefire with Moscow as Iran conflict sends oil prices soaring - The Independent</a>
+            <div class="meta">Google News Ukraine | Mar 31, 2026, 11:31 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNeGRDSHRxZXdZaWphSlpneWJaZjA0bEV6d0ZERGtVRjhudXlRQ05BUzI3UWh0WXBYTDdmcTVIY0hBWWxyMHg2WlJJT2ZWLVNQSjBQanFFWmwzTEJQMHpwRGNnRFJMdmRJdThsRXlpdGtVckRjeVBCWTJfTkxyS0JYTk40bW8tVlJrQ2c5OExQdm1tZ0dsNExMcXpoOFc2d0J2N2xZWldGaERLckJvMEhmZHNvaVJtQkRn?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Kyiv strikes chemical plant deep behind enemy lines with drones, report claims - The Independent</a>
+            <div class="meta">Google News Ukraine | Mar 30, 2026, 10:05 PM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVUlNY3ZWWlNKUTZyOUtsbGRrRm11bktPWk41WnJsU1hkbE1vWkxuLXhTMk12dmxtbkJnZzBQV2QwcF9uMktoaFZPTHJqN0FfaFBpci0xQjVib1RDQlJZN0xnQU0xWUktaTFBR2ZkZnFzVDNDYmFCa2swanRka0U4MnB0cFlKMy1PcVB6UnN1UlJEakhSWmxsTmJEQTlFUjVCbEE5NmtaU09uRFcycHpWTU1KVWlpZFZLWnpZN1FqNEbSAcYBQVVfeXFMTnhCY3JicUF6ZUNuU04yekhDMXlWdjdfQTZiTHY0RVFLcXJUVlZyWFFoempKUzV6SXFfeDJrUExnSUZpcnU0bHZkYU8wOTdNYWxYR0ZXaGdsNU9KTG9zRXNOMkY5dFM3VmRMWDJ6NzliVFBhMklSWk1TNTM1N0N4ekQxOXM1X09iYnJsNmZvTlBHRGhUdUREd185ZTV6THZfb1dtbkxRdlBMaTBuaV9HSFlpUHZpeXFFYTI4aDdERUI5M1Z3d2Zn?oc=5" target="_blank" rel="noreferrer">Iran war deflects attention from Ukraine as an emboldened Russia starts spring offensive - PBS</a>
+            <div class="meta">Google News Ukraine | Mar 27, 2026, 4:38 AM</div>
+          </li>
+        
+          <li>
             <a href="https://www.bbc.com/news/articles/c0kr8lrpekmo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Asia&#39;s migrant workers debate if Gulf jobs are worth deadly risk of Iran war</a>
-            <div class="meta">BBC World | Mar 31, 2026, 10:48 PM</div>
+            <div class="meta">BBC World | Apr 1, 2026, 6:48 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPVzkwYzRiMUVRak1FR2V2VW9BZjZsMldKNnZkYmJIaWk5YVhlSTN0bFM2RWxlM1NCZG83VmJMcHdOR29OQlBfYWpPcDRodDVnMXR2SWs3MHBuTW5YTm5TNW14WG9iQ3FLcF9GWkszbWpfcjNUOW9rYU52NnJJa2JObUg2dWltYjhtZTllUTRWZjFNLXBOam9Ea1ZKTU5qd2VOWlRzOE9KY081S1RvejBCZ0JZN1piQVZxUXc?oc=5" target="_blank" rel="noreferrer">Ukraine war briefing: Russia responds to Zelenskyy’s Easter truce offer with drone attack - The Guardian</a>
-            <div class="meta">Google News Ukraine | Apr 2, 2026, 2:07 AM</div>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 10:07 AM</div>
           </li>
         
           <li>
             <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOSF84dnRUNkpIVjVwcXB1bzZuXzZSSG82MnBSRWc2ZWVDeGUwQTh0N3k4NkNZdllHZUNyTlNuUzJ5TUFwdVZRazdZRllUYkd1N1VvLXJNZmdWU1B6UmJkQ3lnQk5xQnZ2d040TnBsdngzLXdwOUFtaDFGSzRabnhNUmp3dU5wZXY0SVdQSVQ3RWdBa05GZHNETk83bzZyWTg0d19ibHlLUnRwclVxVTBody1WbVVqcGM?oc=5" target="_blank" rel="noreferrer">Ukraine war latest: Russia launches mass daytime drone attack on western, central Ukraine - The Kyiv Independent</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 6:26 PM</div>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 2:26 AM</div>
           </li>
         
           <li>
-            <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPTENRa2ZVNmM2cVdQVXNNX0RacGlvNTFxeGtDQ0RzLUJvazEyMFNtN1ZVNlV0aGxhSnk4cDdCSE80NzdEUVFWYXdHS0g3WEhvUTk4V1AwWWJGR3VLWGJtZGVPYzIyckI4UjlTbW05akpTbnZPcXpWX3VqdzlWMUhuX0pKUjdKRU1mRVdmSjUzbnpnTWZ6R1d2Q1I1ZV8?oc=5" target="_blank" rel="noreferrer">Ukraine war today: Russia launches wave of drone attacks as Zelensky pushes for peace talks - The Independent</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 4:21 PM</div>
-          </li>
-        
-          <li>
-            <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQbFZLR1FEdmQ1TjFJYXB2VDc2ZU15RkJ0MHVCaVR3OGw5QWowY2UxaDVfMENDVDF2S3pob2plWjVGUHM4a1JTRHpoaWpQNnNlQjMyaUs3SG9CUi14SnNCRjd0OWZCRm5zTUNRMUZ6bTNLNXprTTFDXzNvVW05dGJDekNhUEJ4TjdTaWQtNk1QWTB4Z21GU2pTVVp5MXlVLTVXN0FVak40VUQySFpJT0JqR0taYjQ1WDhuZ19kR1RhTQ?oc=5" target="_blank" rel="noreferrer">Ukraine intercepts nearly 90% of Russian missiles, kamikaze drones in March, Defense Ministry says - Ґвара Медіа</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 1:54 PM</div>
-          </li>
-        
-          <li>
-            <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPbl8tck1nbEo0Qlg4c2ppV2VvV0FPUGJaLVVVUHZXRFY1Q2JBWlI0ZjFnQmpCZGlpTm8xNzA0ZjY0Nm1pWUNic3NveUNTcExtTkxyQ0Fod0U3ZE83a1FXal91VHMxbVRQMThuMWxSdkoycFdsa3JOcm5zVlpSM1ZpOFRya2dZN2pja01la2g3VjJmNHZ3T3JzNjM4cVVHZWpubnBoOEJHOEtRNzdyaHliODRYd3BiQQ?oc=5" target="_blank" rel="noreferrer">Russia and Ukraine Set to Intensify War as World Focuses on Iran - Bloomberg</a>
-            <div class="meta">Google News Ukraine | Apr 1, 2026, 12:27 PM</div>
+            <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPbl8tck1nbEo0Qlg4c2ppV2VvV0FPUGJaLVVVUHZXRFY1Q2JBWlI0ZjFnQmpCZGlpTm8xNzA0ZjY0Nm1pWUNic3NveUNTcExtTkxyQ0Fod0U3ZE83a1FXal91VHMxbVRQMThuMWxSdkoycFdsa3JOcm5zVlpSM1ZpOFRya2dZN2pja01la2g3VjJmNHZ3T3JzNjM4cVVHZWpubnBoOEJHOEtRNzdyaHliODRYd3BiQQ?oc=5" target="_blank" rel="noreferrer">Russia and Ukraine Set to Intensify War as World Focuses on Iran - Bloomberg.com</a>
+            <div class="meta">Google News Ukraine | Apr 1, 2026, 8:27 PM</div>
           </li>
         
           <li>
             <a href="https://www.npr.org/2026/04/01/nx-s1-5769805/iran-war-trump" target="_blank" rel="noreferrer">Israel strikes Lebanon as Trump is set to deliver a speech on the Iran war</a>
-            <div class="meta">NPR World | Apr 1, 2026, 10:02 AM</div>
-          </li>
-        
-          <li>
-            <a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE55bmNLSjlGODJXSnFUX2EzbEhZeEJqV3BZLWNCSWk5ZXpPMlE1d1JZZkhZWXdicVdEajlUbE5XOGJFOWFvbmdENzdfQlBuYWpKdlJHd05jaUtSNlM2M1ZWZ0JuZWFYMXVOa3Jr?oc=5" target="_blank" rel="noreferrer">Israel strikes Lebanon as Trump is set to deliver a speech on the Iran war - NPR</a>
-            <div class="meta">Google News Middle East | Apr 1, 2026, 10:02 AM</div>
+            <div class="meta">NPR World | Apr 1, 2026, 6:02 PM</div>
           </li>
         </ul>
     </section>
   
         
     <section class="card">
-      <h2>Technology News</h2>
+      <h2><span class="lang lang-en">Technology News</span><span class="lang lang-zh">科技新闻</span></h2>
       <ul class="news-list">
           <li>
             <a href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noreferrer">Nvidia rolls out its fix for PC gaming&#39;s &quot;compiling shaders&quot; wait times</a>
-            <div class="meta">Ars Technica | Apr 1, 2026, 8:46 PM</div>
+            <div class="meta">Ars Technica | Apr 2, 2026, 4:46 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noreferrer">Startup funding shatters all records in Q1</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 8:25 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 4:25 AM</div>
           </li>
         
           <li>
             <a href="https://www.theverge.com/transportation/905363/kia-ev3-north-america-launch" target="_blank" rel="noreferrer">Kia&amp;#8217;s compact EV3 is coming to the US this year, with 320 miles of range</a>
-            <div class="meta">The Verge | Apr 1, 2026, 5:50 PM</div>
+            <div class="meta">The Verge | Apr 2, 2026, 1:50 AM</div>
           </li>
         
           <li>
             <a href="https://www.wired.com/story/iran-threatens-to-start-attacking-major-us-tech-firms-on-april-1/" target="_blank" rel="noreferrer">Iran Threatens to Start Attacking Major US Tech Firms on April 1</a>
-            <div class="meta">Wired | Mar 31, 2026, 9:25 PM</div>
+            <div class="meta">Wired | Apr 1, 2026, 5:25 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noreferrer">&amp;#8216;System failure&amp;#8217; paralyzes Baidu robotaxis in China</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 9:12 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 5:12 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noreferrer">Apple releases security fix for older iPhones and iPads to protect against DarkSword attacks</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 7:02 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 3:02 AM</div>
           </li>
         
           <li>
             <a href="https://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/" target="_blank" rel="noreferrer">Meta’s natural gas binge could power South Dakota</a>
-            <div class="meta">TechCrunch | Apr 1, 2026, 6:35 PM</div>
+            <div class="meta">TechCrunch | Apr 2, 2026, 2:35 AM</div>
           </li>
         
           <li>
             <a href="https://www.wired.com/story/ai-models-lie-cheat-steal-protect-other-models-research/" target="_blank" rel="noreferrer">AI Models Lie, Cheat, and Steal to Protect Other Models From Being Deleted</a>
-            <div class="meta">Wired | Apr 1, 2026, 6:30 PM</div>
+            <div class="meta">Wired | Apr 2, 2026, 2:30 AM</div>
           </li>
         </ul>
     </section>
   
         
     <section class="card">
-      <h2>X Signals</h2>
-      <ul class="news-list"><li>X is not configured yet.</li></ul>
+      <h2><span class="lang lang-en">X Signals</span><span class="lang lang-zh">X 信号</span></h2>
+      <ul class="news-list"><li><span class="lang lang-en">X is not configured yet.</span><span class="lang lang-zh">X 功能暂未配置。</span></li></ul>
     </section>
   
         
     <section class="card">
-      <h2>Status / Missing Setup</h2>
-      <ul class="error-list"><li>No errors in this run.</li></ul>
+      <h2><span class="lang lang-en">Status / Missing Setup</span><span class="lang lang-zh">状态 / 待完善配置</span></h2>
+      <ul class="error-list"><li><span class="lang lang-en">No errors in this run.</span><span class="lang lang-zh">本轮无错误。</span></li></ul>
     </section>
   
       </div>
     </section>
 
     <section class="card disclaimer">
-      <h2>Public Notes</h2>
+      <h2><span class="lang lang-en">Public Notes</span><span class="lang lang-zh">公开说明</span></h2>
       <ul>
-        <li>This page is an automated public snapshot, not investment advice or war-zone verification.</li>
-        <li>Each headline links to its original source for direct reading and independent judgment.</li>
-        <li>X monitoring is currently disabled in the public version to avoid unstable API credit usage.</li>
+        <li><span class="lang lang-en">This page is an automated public snapshot, not investment advice or war-zone verification.</span><span class="lang lang-zh">本页面为自动化公开快照，不构成投资建议，也不构成战区事实核验。</span></li>
+        <li><span class="lang lang-en">Each headline links to its original source for direct reading and independent judgment.</span><span class="lang lang-zh">每条头条都附有原始来源链接，方便直接阅读并独立判断。</span></li>
+        <li><span class="lang lang-en">X monitoring is currently disabled in the public version to avoid unstable API credit usage.</span><span class="lang lang-zh">为避免不稳定的 API 积分消耗，公开版当前关闭了 X 监控。</span></li>
       </ul>
     </section>
 
     <div class="footer">
-      Public page generated by News Sentinel Bot.
+      <span class="lang lang-en">Public page generated by News Sentinel Bot.</span><span class="lang lang-zh">本公开页面由 News Sentinel Bot 自动生成。</span>
       <br />
-      Designed for lightweight public monitoring, with emphasis on readable summaries and source visibility.
+      <span class="lang lang-en">Designed for lightweight public monitoring, with emphasis on readable summaries and source visibility.</span><span class="lang lang-zh">面向轻量化公开监控场景，强调易读摘要与来源可追溯性。</span>
     </div>
   </main>
-  
-  <script data-goatcounter="https://aimer.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script>
     (function() {
-      var target = document.getElementById('live-total-visits');
-      if (!target) return;
-      var endpoint = "https://aimer.goatcounter.com/count";
-      try {
-        var url = new URL(endpoint);
-        fetch(url.origin + '/counter/TOTAL.json')
-          .then(function(response) { return response.json(); })
-          .then(function(data) {
-            target.textContent = data.count || '0';
-          })
-          .catch(function() {
-            target.textContent = 'Unavailable';
-          });
-      } catch (error) {
-        target.textContent = 'Unavailable';
+      var html = document.documentElement;
+      var storageKey = 'news-sentinel-lang';
+      var saved = localStorage.getItem(storageKey);
+      var browserLang = (navigator.language || '').toLowerCase();
+      var initial = saved || (browserLang.startsWith('zh') ? 'zh' : 'en');
+      function applyLang(lang) {
+        html.setAttribute('data-lang', lang);
+        html.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        document.querySelectorAll('[data-set-lang]').forEach(function(button) {
+          button.classList.toggle('is-active', button.getAttribute('data-set-lang') === lang);
+        });
       }
+      document.querySelectorAll('[data-set-lang]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          var lang = button.getAttribute('data-set-lang');
+          localStorage.setItem(storageKey, lang);
+          applyLang(lang);
+        });
+      });
+      applyLang(initial);
     })();
   </script>
+  
 </body>
 </html>
