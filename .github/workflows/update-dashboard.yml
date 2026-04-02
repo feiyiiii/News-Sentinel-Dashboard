@@ -1,0 +1,52 @@
+name: Update Public Dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Create environment file
+        run: |
+          cat > .env <<'EOF'
+          ALPHA_VANTAGE_API_KEY=${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          X_BEARER_TOKEN=${{ secrets.X_BEARER_TOKEN }}
+          X_QUERIES=${{ secrets.X_QUERIES }}
+          X_MAX_RESULTS=10
+          BTC_ALERT_PERCENT=2
+          ETH_ALERT_PERCENT=2
+          GOLD_ALERT_PERCENT=0.5
+          SILVER_ALERT_PERCENT=0.5
+          STATE_FILE=./data/state.json
+          REPORT_FILE=./output/latest-report.md
+          EOF
+
+      - name: Generate dashboard
+        run: npm run build:public
+
+      - name: Commit updated public files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Update public dashboard"
+          git push
