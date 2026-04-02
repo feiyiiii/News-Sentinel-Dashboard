@@ -26,7 +26,8 @@ jobs:
           cat > .env <<'EOF'
           ALPHA_VANTAGE_API_KEY=${{ secrets.ALPHA_VANTAGE_API_KEY }}
           X_BEARER_TOKEN=${{ secrets.X_BEARER_TOKEN }}
-          X_QUERIES=${{ secrets.X_QUERIES }}
+          X_QUERIES=${{ secrets.X_QUERIES }} 
+          GOATCOUNTER_ENDPOINT=${{ secrets.GOATCOUNTER_ENDPOINT }}
           X_MAX_RESULTS=10
           BTC_ALERT_PERCENT=2
           ETH_ALERT_PERCENT=2
