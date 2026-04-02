@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News Sentinel Dashboard</title>
+  <style>
+    :root {
+      --bg: #f6efe5;
+      --panel: #fffaf2;
+      --ink: #1c1a17;
+      --muted: #6c6256;
+      --line: #d8c9b5;
+      --accent: #1f6b5c;
+      --up: #0a7a43;
+      --down: #aa3e2b;
+      --shadow: 0 16px 40px rgba(70, 42, 18, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 30%),
+        linear-gradient(135deg, #f3eadf 0%, #efe1cf 50%, #ead8c0 100%);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(31,107,92,0.94), rgba(25,53,76,0.92));
+      color: white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+    }
+    .hero p {
+      margin: 6px 0;
+      color: rgba(255,255,255,0.86);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(216, 201, 181, 0.9);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .summary, .prices, .lists {
+      grid-column: 1 / -1;
+    }
+    .summary-grid, .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .price-card .price {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0 10px;
+    }
+    .price-card.up { border-left: 6px solid var(--up); }
+    .price-card.down { border-left: 6px solid var(--down); }
+    .price-card.flat { border-left: 6px solid var(--accent); }
+    .muted, .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .lists-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    h2, h3 {
+      margin-top: 0;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #0f4f87;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>News Sentinel Dashboard</h1>
+      <p>A local dashboard for war updates, tech news, crypto, and metals monitoring.</p>
+      <p>Generated at Apr 2, 2026, 10:35 AM</p>
+      <span class="pill">6-hour monitoring bot</span>
+      <span class="pill">Local dashboard</span>
+      <span class="pill">Click links to open sources</span>
+    </section>
+
+    <section class="card summary">
+      <h2>Alerts</h2>
+      <ul><li>Silver moved down -1.02% since the last run.</li></ul>
+    </section>
+
+    <section class="prices">
+      <div class="price-grid">
+        
+    <section class="card price-card down">
+      <h3>Bitcoin</h3>
+      <div class="price">$66,985.00</div>
+      <p>Since last run: <strong>-0.20%</strong></p>
+      <p>24h: <strong>-0.96%</strong></p>
+      <p class="muted">Source: CoinGecko</p>
+    </section>
+  
+        
+    <section class="card price-card down">
+      <h3>Ethereum</h3>
+      <div class="price">$2,086.74</div>
+      <p>Since last run: <strong>-0.13%</strong></p>
+      <p>24h: <strong>+0.07%</strong></p>
+      <p class="muted">Source: CoinGecko</p>
+    </section>
+  
+        
+    <section class="card price-card down">
+      <h3>Gold</h3>
+      <div class="price">$4,669.38</div>
+      <p>Since last run: <strong>-0.49%</strong></p>
+      <p>24h: <strong>n/a</strong></p>
+      <p class="muted">Source: Alpha Vantage</p>
+    </section>
+  
+        
+    <section class="card price-card down">
+      <h3>Silver</h3>
+      <div class="price">$71.98</div>
+      <p>Since last run: <strong>-1.02%</strong></p>
+      <p>24h: <strong>n/a</strong></p>
+      <p class="muted">Source: Alpha Vantage</p>
+    </section>
+  
+      </div>
+    </section>
+
+    <section class="lists">
+      <div class="lists-grid">
+        
+    <section class="card">
+      <h2>War Developments</h2>
+      <ul class="news-list">
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOUzNDNUxwT3Z4Q1dwc0NSdmFzVnU4djdDTGpSWnFFWlFQZWdzMV9rYjY1RzlIQmpGSkVnTllodGkzM2h0RzNXcVNRUTMzLXJqeUoyOFpBN1RDZ0xWQzNmTVk1dkRjdlZrYUNJaTVvTHMwcnNJcjVjYlJBWmdsRzFaZi1aa3RhNFpHVmNpRFBteUF1bXM2OFRybDJYdmNsVVdEcEF2dFlRMWFGU25kYy1PN2JLTTRNZmFsVHZsY19pX1RHMkVaNHRGRGtEdTR2MC15N1FfbDVR?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Zelensky proposes energy ceasefire with Moscow as Iran conflict sends oil prices soaring - independent.co.uk</a>
+            <div class="meta">Google News Ukraine | Mar 31, 2026, 11:31 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNeGRDSHRxZXdZaWphSlpneWJaZjA0bEV6d0ZERGtVRjhudXlRQ05BUzI3UWh0WXBYTDdmcTVIY0hBWWxyMHg2WlJJT2ZWLVNQSjBQanFFWmwzTEJQMHpwRGNnRFJMdmRJdThsRXlpdGtVckRjeVBCWTJfTkxyS0JYTk40bW8tVlJrQ2c5OExQdm1tZ0dsNExMcXpoOFc2d0J2N2xZWldGaERLckJvMEhmZHNvaVJtQkRn?oc=5" target="_blank" rel="noreferrer">Ukraine-Russia war latest: Kyiv strikes chemical plant deep behind enemy lines with drones, report claims - independent.co.uk</a>
+            <div class="meta">Google News Ukraine | Mar 30, 2026, 10:05 PM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVUlNY3ZWWlNKUTZyOUtsbGRrRm11bktPWk41WnJsU1hkbE1vWkxuLXhTMk12dmxtbkJnZzBQV2QwcF9uMktoaFZPTHJqN0FfaFBpci0xQjVib1RDQlJZN0xnQU0xWUktaTFBR2ZkZnFzVDNDYmFCa2swanRka0U4MnB0cFlKMy1PcVB6UnN1UlJEakhSWmxsTmJEQTlFUjVCbEE5NmtaU09uRFcycHpWTU1KVWlpZFZLWnpZN1FqNEbSAcYBQVVfeXFMTnhCY3JicUF6ZUNuU04yekhDMXlWdjdfQTZiTHY0RVFLcXJUVlZyWFFoempKUzV6SXFfeDJrUExnSUZpcnU0bHZkYU8wOTdNYWxYR0ZXaGdsNU9KTG9zRXNOMkY5dFM3VmRMWDJ6NzliVFBhMklSWk1TNTM1N0N4ekQxOXM1X09iYnJsNmZvTlBHRGhUdUREd185ZTV6THZfb1dtbkxRdlBMaTBuaV9HSFlpUHZpeXFFYTI4aDdERUI5M1Z3d2Zn?oc=5" target="_blank" rel="noreferrer">Iran war deflects attention from Ukraine as an emboldened Russia starts spring offensive - PBS</a>
+            <div class="meta">Google News Ukraine | Mar 27, 2026, 4:38 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://www.bbc.com/news/articles/c0kr8lrpekmo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Asia&#39;s migrant workers debate if Gulf jobs are worth deadly risk of Iran war</a>
+            <div class="meta">BBC World | Apr 1, 2026, 6:48 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPVzkwYzRiMUVRak1FR2V2VW9BZjZsMldKNnZkYmJIaWk5YVhlSTN0bFM2RWxlM1NCZG83VmJMcHdOR29OQlBfYWpPcDRodDVnMXR2SWs3MHBuTW5YTm5TNW14WG9iQ3FLcF9GWkszbWpfcjNUOW9rYU52NnJJa2JObUg2dWltYjhtZTllUTRWZjFNLXBOam9Ea1ZKTU5qd2VOWlRzOE9KY081S1RvejBCZ0JZN1piQVZxUXc?oc=5" target="_blank" rel="noreferrer">Ukraine war briefing: Russia responds to Zelenskyy’s Easter truce offer with drone attack - The Guardian</a>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 10:07 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOSF84dnRUNkpIVjVwcXB1bzZuXzZSSG82MnBSRWc2ZWVDeGUwQTh0N3k4NkNZdllHZUNyTlNuUzJ5TUFwdVZRazdZRllUYkd1N1VvLXJNZmdWU1B6UmJkQ3lnQk5xQnZ2d040TnBsdngzLXdwOUFtaDFGSzRabnhNUmp3dU5wZXY0SVdQSVQ3RWdBa05GZHNETk83bzZyWTg0d19ibHlLUnRwclVxVTBody1WbVVqcGM?oc=5" target="_blank" rel="noreferrer">Ukraine war latest: Russia launches mass daytime drone attack on western, central Ukraine - The Kyiv Independent</a>
+            <div class="meta">Google News Ukraine | Apr 2, 2026, 2:26 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPbl8tck1nbEo0Qlg4c2ppV2VvV0FPUGJaLVVVUHZXRFY1Q2JBWlI0ZjFnQmpCZGlpTm8xNzA0ZjY0Nm1pWUNic3NveUNTcExtTkxyQ0Fod0U3ZE83a1FXal91VHMxbVRQMThuMWxSdkoycFdsa3JOcm5zVlpSM1ZpOFRya2dZN2pja01la2g3VjJmNHZ3T3JzNjM4cVVHZWpubnBoOEJHOEtRNzdyaHliODRYd3BiQQ?oc=5" target="_blank" rel="noreferrer">Russia and Ukraine Set to Intensify War as World Focuses on Iran - Bloomberg.com</a>
+            <div class="meta">Google News Ukraine | Apr 1, 2026, 8:27 PM</div>
+          </li>
+        
+          <li>
+            <a href="https://www.npr.org/2026/04/01/nx-s1-5769805/iran-war-trump" target="_blank" rel="noreferrer">Israel strikes Lebanon as Trump is set to deliver a speech on the Iran war</a>
+            <div class="meta">NPR World | Apr 1, 2026, 6:02 PM</div>
+          </li>
+        </ul>
+    </section>
+  
+        
+    <section class="card">
+      <h2>Technology News</h2>
+      <ul class="news-list">
+          <li>
+            <a href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noreferrer">Nvidia rolls out its fix for PC gaming&#39;s &quot;compiling shaders&quot; wait times</a>
+            <div class="meta">Ars Technica | Apr 2, 2026, 4:46 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noreferrer">Startup funding shatters all records in Q1</a>
+            <div class="meta">TechCrunch | Apr 2, 2026, 4:25 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://www.theverge.com/transportation/905363/kia-ev3-north-america-launch" target="_blank" rel="noreferrer">Kia&amp;#8217;s compact EV3 is coming to the US this year, with 320 miles of range</a>
+            <div class="meta">The Verge | Apr 2, 2026, 1:50 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://www.wired.com/story/iran-threatens-to-start-attacking-major-us-tech-firms-on-april-1/" target="_blank" rel="noreferrer">Iran Threatens to Start Attacking Major US Tech Firms on April 1</a>
+            <div class="meta">Wired | Apr 1, 2026, 5:25 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noreferrer">&amp;#8216;System failure&amp;#8217; paralyzes Baidu robotaxis in China</a>
+            <div class="meta">TechCrunch | Apr 2, 2026, 5:12 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noreferrer">Apple releases security fix for older iPhones and iPads to protect against DarkSword attacks</a>
+            <div class="meta">TechCrunch | Apr 2, 2026, 3:02 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/" target="_blank" rel="noreferrer">Meta’s natural gas binge could power South Dakota</a>
+            <div class="meta">TechCrunch | Apr 2, 2026, 2:35 AM</div>
+          </li>
+        
+          <li>
+            <a href="https://www.wired.com/story/ai-models-lie-cheat-steal-protect-other-models-research/" target="_blank" rel="noreferrer">AI Models Lie, Cheat, and Steal to Protect Other Models From Being Deleted</a>
+            <div class="meta">Wired | Apr 2, 2026, 2:30 AM</div>
+          </li>
+        </ul>
+    </section>
+  
+        
+    <section class="card">
+      <h2>X Signals</h2>
+      <ul class="news-list"><li>X is not configured yet.</li></ul>
+    </section>
+  
+        
+    <section class="card">
+      <h2>Status / Missing Setup</h2>
+      <ul class="error-list"><li>No errors in this run.</li></ul>
+    </section>
+  
+      </div>
+    </section>
+
+    <div class="footer">
+      File generated locally by News Sentinel Bot.
+    </div>
+  </main>
+</body>
+</html>
