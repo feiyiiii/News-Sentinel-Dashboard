@@ -114,6 +114,36 @@
       line-height: 1;
       margin-bottom: 10px;
     }
+    .visits-card {
+      background:
+        radial-gradient(circle at top right, rgba(31, 107, 92, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(31,107,92,0.08), rgba(31,107,92,0.02)),
+        var(--panel);
+      border: 1px solid rgba(31, 107, 92, 0.28);
+      box-shadow: 0 18px 48px rgba(31, 107, 92, 0.12);
+      transform: translateY(-2px);
+    }
+    .visit-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: #16a34a;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+      animation: pulse 1.8s infinite;
+      flex: 0 0 auto;
+    }
+    .visit-subtitle {
+      margin-top: -2px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #205c51;
+      font-weight: 600;
+    }
     .price-card .price {
       font-size: 28px;
       font-weight: 700;
@@ -157,6 +187,17 @@
       margin-right: 8px;
       margin-top: 8px;
     }
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(22, 163, 74, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+      }
+    }
     @media (max-width: 720px) {
       .language-toggle {
         position: static;
@@ -177,7 +218,7 @@
       </div>
       <h1>News Sentinel</h1>
       <p class="kicker"><span class="lang lang-en">A public monitoring dashboard for major war developments, high-signal technology news, crypto snapshots, and precious metals tracking.</span><span class="lang lang-zh">一个面向公开访问的监控看板，聚焦战争动态、重要科技新闻、加密货币快照与贵金属追踪。</span></p>
-      <p><span class="lang lang-en">Last updated</span><span class="lang lang-zh">最后更新</span>: Apr 2, 2026, 12:19 PM (Asia/Shanghai)</p>
+      <p><span class="lang lang-en">Last updated</span><span class="lang lang-zh">最后更新</span>: Apr 2, 2026, 12:20 PM (Asia/Shanghai)</p>
       <span class="pill"><span class="lang lang-en">Updated every 6 hours</span><span class="lang lang-zh">每 6 小时更新</span></span>
       <span class="pill"><span class="lang lang-en">Public dashboard</span><span class="lang lang-zh">公开看板</span></span>
       <span class="pill"><span class="lang lang-en">Source-linked headlines</span><span class="lang lang-zh">附原始来源链接</span></span>
@@ -193,7 +234,7 @@
         
     <section class="card stat-card">
       <p class="eyebrow"><span class="lang lang-en">Tracked Markets</span><span class="lang lang-zh">监控市场</span></p>
-      <div class="stat-value">4</div>
+      <div class="stat-value">2</div>
       <p class="muted"><span class="lang lang-en">BTC, ETH, Gold, and Silver snapshots</span><span class="lang lang-zh">BTC、ETH、黄金与白银快照</span></p>
     </section>
   
@@ -219,9 +260,10 @@
     </section>
   
         
-    <section class="card stat-card">
+    <section class="card stat-card visits-card">
       <p class="eyebrow"><span class="lang lang-en">Public Visits</span><span class="lang lang-zh">公开访问量</span></p>
-      <div class="stat-value"><span class="lang lang-en"><span id="live-total-visits-en">Loading...</span></span><span class="lang lang-zh"><span id="live-total-visits-zh">加载中...</span></span></div>
+      <div class="stat-value"><span class="lang lang-en"><span class="visit-value"><span class="status-dot" aria-hidden="true"></span><span id="live-total-visits-en">Loading...</span></span></span><span class="lang lang-zh"><span class="visit-value"><span class="status-dot" aria-hidden="true"></span><span id="live-total-visits-zh">加载中...</span></span></span></div>
+      <p class="visit-subtitle"><span class="lang lang-en">Live audience signal</span><span class="lang lang-zh">实时访问热度</span></p>
       <p class="muted"><span class="lang lang-en">Near-real-time public visits via GoatCounter</span><span class="lang lang-zh">通过 GoatCounter 展示接近实时的公开访问量</span></p>
     </section>
   
@@ -231,28 +273,22 @@
     <section class="prices">
       <div class="price-grid">
         
-    <section class="card price-card down">
-      <h3><span class="lang lang-en">Bitcoin</span><span class="lang lang-zh">比特币</span></h3>
-      <div class="price">$66,548.00</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.01%</strong></p>
-      <p>24h: <strong>-2.21%</strong></p>
-      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
-    </section>
-  
+      <section class="card price-card">
+        <h3><span class="lang lang-en">Bitcoin</span><span class="lang lang-zh">比特币</span></h3>
+        <p class="muted"><span class="lang lang-en">Data unavailable</span><span class="lang lang-zh">暂无数据</span></p>
+      </section>
+    
+        
+      <section class="card price-card">
+        <h3><span class="lang lang-en">Ethereum</span><span class="lang lang-zh">以太坊</span></h3>
+        <p class="muted"><span class="lang lang-en">Data unavailable</span><span class="lang lang-zh">暂无数据</span></p>
+      </section>
+    
         
     <section class="card price-card down">
-      <h3><span class="lang lang-en">Ethereum</span><span class="lang lang-zh">以太坊</span></h3>
-      <div class="price">$2,054.96</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.02%</strong></p>
-      <p>24h: <strong>-2.32%</strong></p>
-      <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: CoinGecko</p>
-    </section>
-  
-        
-    <section class="card price-card up">
       <h3><span class="lang lang-en">Gold</span><span class="lang lang-zh">黄金</span></h3>
-      <div class="price">$4,669.87</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>+0.00%</strong></p>
+      <div class="price">$4,668.54</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.03%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
@@ -260,8 +296,8 @@
         
     <section class="card price-card down">
       <h3><span class="lang lang-en">Silver</span><span class="lang lang-zh">白银</span></h3>
-      <div class="price">$71.93</div>
-      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.01%</strong></p>
+      <div class="price">$71.91</div>
+      <p><span class="lang lang-en">Since last run</span><span class="lang lang-zh">较上次运行</span>: <strong>-0.03%</strong></p>
       <p>24h: <strong>n/a</strong></p>
       <p class="muted"><span class="lang lang-en">Source</span><span class="lang lang-zh">来源</span>: Alpha Vantage</p>
     </section>
@@ -372,7 +408,7 @@
         
     <section class="card">
       <h2><span class="lang lang-en">Status / Missing Setup</span><span class="lang lang-zh">状态 / 待完善配置</span></h2>
-      <ul class="error-list"><li><span class="lang lang-en">No errors in this run.</span><span class="lang lang-zh">本轮无错误。</span></li></ul>
+      <ul class="error-list"><li>Crypto: fetch failed</li></ul>
     </section>
   
       </div>

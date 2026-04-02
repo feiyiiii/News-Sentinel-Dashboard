@@ -54,16 +54,20 @@ function renderSummaryCard(englishTitle, chineseTitle, value, englishNote, chine
 
 function renderLiveCounterCard(goatcounterEnabled) {
   const value = goatcounterEnabled
-    ? renderHtmlLang('<span id="live-total-visits-en">Loading...</span>', '<span id="live-total-visits-zh">加载中...</span>')
+    ? renderHtmlLang(
+        '<span class="visit-value"><span class="status-dot" aria-hidden="true"></span><span id="live-total-visits-en">Loading...</span></span>',
+        '<span class="visit-value"><span class="status-dot" aria-hidden="true"></span><span id="live-total-visits-zh">加载中...</span></span>'
+      )
     : renderLang('Disabled', '未启用');
   const note = goatcounterEnabled
     ? renderLang('Near-real-time public visits via GoatCounter', '通过 GoatCounter 展示接近实时的公开访问量')
     : renderLang('Set GOATCOUNTER_ENDPOINT to enable public visit stats', '设置 GOATCOUNTER_ENDPOINT 以启用公开访问量统计');
 
   return `
-    <section class="card stat-card">
+    <section class="card stat-card visits-card">
       <p class="eyebrow">${renderLang('Public Visits', '公开访问量')}</p>
       <div class="stat-value">${value}</div>
+      <p class="visit-subtitle">${renderLang('Live audience signal', '实时访问热度')}</p>
       <p class="muted">${note}</p>
     </section>
   `;
@@ -287,6 +291,36 @@ export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, e
       line-height: 1;
       margin-bottom: 10px;
     }
+    .visits-card {
+      background:
+        radial-gradient(circle at top right, rgba(31, 107, 92, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(31,107,92,0.08), rgba(31,107,92,0.02)),
+        var(--panel);
+      border: 1px solid rgba(31, 107, 92, 0.28);
+      box-shadow: 0 18px 48px rgba(31, 107, 92, 0.12);
+      transform: translateY(-2px);
+    }
+    .visit-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: #16a34a;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+      animation: pulse 1.8s infinite;
+      flex: 0 0 auto;
+    }
+    .visit-subtitle {
+      margin-top: -2px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #205c51;
+      font-weight: 600;
+    }
     .price-card .price {
       font-size: 28px;
       font-weight: 700;
@@ -329,6 +363,17 @@ export function buildDashboardHtml({ runAt, timezone, alerts, prices, news, x, e
       border-radius: 999px;
       margin-right: 8px;
       margin-top: 8px;
+    }
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(22, 163, 74, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+      }
     }
     @media (max-width: 720px) {
       .language-toggle {
